@@ -11,9 +11,12 @@ services:
      - db
     ports:
      - "1080:80"
+    volumes:
+      - ./pro:/var/www/html:rw
     environment:
       VIRTUAL_HOST: web.local
   db:
+    build: ./mysql
     image: mysql:8.0
     container_name: mysql-db
     ports:
