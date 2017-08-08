@@ -16,7 +16,7 @@ services:
     environment:
       VIRTUAL_HOST: web.local
   db:
-    build: ./mysql
+    build: ./mysql-server
     image: mysql:8.0
     container_name: mysql-db
     ports:
