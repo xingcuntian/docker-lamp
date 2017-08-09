@@ -47,11 +47,16 @@ RUN /usr/sbin/a2dissite '*' && /usr/sbin/a2ensite 000-laravel 001-laravel-ssl
 ########################################################################
 
 RUN   groupadd docker \
+      && useradd sensetime -g docker \
       && useradd developer -g docker -m -s /bin/bash \
       && chmod 777 /home/developer  \
-      && usermod -g docker www-data \
+      #&& usermod -g docker sensetime \
       && mkdir /var/www/html/app \
-      && chown -R www-data:docker /var/www/html
+      && chown -R sensetime:docker /var/www
+
+ENV APACHE_RUN_USER sensetime
+ENV APACHE_RUN_GROUP docker
+ENV APACHE_LOG_DIR /var/log/apache2
 
 #RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
