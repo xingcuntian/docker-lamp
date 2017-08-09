@@ -12,7 +12,7 @@ services:
     ports:
      - "1080:80"
     volumes:
-      - ./pro:/var/www/html:rw
+      - ./src:/var/www:rw
     environment:
       VIRTUAL_HOST: web.local
   db:
