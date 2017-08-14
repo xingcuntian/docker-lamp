@@ -13,6 +13,7 @@ services:
      - "1080:80"
     volumes:
       - ./src:/var/www:rw
+      - ./image:/var/www/image:rw
     environment:
       VIRTUAL_HOST: web.local
   db:
@@ -26,4 +27,16 @@ services:
       MYSQL_USER: mysql
       MYSQL_PASSWORD: mysql
       MYSQL_ROOT_PASSWORD: root
+  cache_redis:
+    image: redis:alpine
+    container_name: redis-cache
+  nginx_static:
+    build: ./nginx-server
+    image: nginx:alpine
+    container_name: nginx_file_server
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./image:/var/www/image:rw
+      
        
