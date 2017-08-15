@@ -3,12 +3,15 @@
 ###构建：
 
 docker-compose build .
+
 ###运行
 
 docker-compose up -d
+
 ###构建并运行
 
 docker-compose up --build -d
+
 ###初始化
 
 docker exec  httpd-php /usr/local/bin/composer_start.sh
