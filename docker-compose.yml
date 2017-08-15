@@ -7,8 +7,10 @@ services:
     container_name: httpd-php
     depends_on:
      - db
+     - cache_redis
     links:
      - db
+     - cache_redis
     ports:
      - "1080:80"
     volumes:
@@ -28,8 +30,11 @@ services:
       MYSQL_PASSWORD: mysql
       MYSQL_ROOT_PASSWORD: root
   cache_redis:
+    build: ./cache-redis
     image: redis:alpine
     container_name: redis-cache
+    ports:
+      - "63799:6379"
   nginx_static:
     build: ./nginx-server
     image: nginx:alpine

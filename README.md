@@ -1,4 +1,4 @@
-# docker-lamp
+# docker-lanmrp
 
 ###构建：
 
@@ -29,3 +29,4 @@ docker ps -a | awk {print } | xargs docker rm
 
 
 docker images |grep none |xargs docker rmi
+
